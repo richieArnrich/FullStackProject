@@ -1,0 +1,11 @@
+.myForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#label,
+#input {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  display: block;
+}
