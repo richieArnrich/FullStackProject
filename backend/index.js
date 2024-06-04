@@ -1,5 +1,5 @@
 const express = require("express"); //import express
-
+const cors = require("cors");
 const mongoose = require("mongoose"); // import mongoose driver
 
 const app = express(); //instantiating express
@@ -17,6 +17,8 @@ app.get("/", (req, res) => {
   res.send("API is working");
 });
 
+app.use(express.json());
+app.use(cors());
 app.post("/users", userRoutes);
 app.listen(4000, () => {
   connect();
