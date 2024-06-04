@@ -10,6 +10,7 @@ function SignUp() {
     let inputObj = { name, email, password, contact };
     console.log(inputObj);
     event.preventDefault();
+    // axios.post()
   };
   return (
     <form className="myForm">
