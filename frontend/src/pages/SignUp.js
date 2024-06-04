@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/SignUp.css";
+import axios from "axios";
 function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -9,8 +10,21 @@ function SignUp() {
   let handleSubmit = (event) => {
     let inputObj = { name, email, password, contact };
     console.log(inputObj);
+    axios
+      .post("http://localhost:4000/users/createuser", inputObj)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.status === 200) {
+          alert("user created successfully");
+        } else {
+          Promise.reject();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("something went wrong");
+      });
     event.preventDefault();
-    // axios.post()
   };
   return (
     <form className="myForm">

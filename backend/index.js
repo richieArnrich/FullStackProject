@@ -19,7 +19,8 @@ app.get("/", (req, res) => {
 
 app.use(express.json());
 app.use(cors());
-app.post("/users", userRoutes);
+console.log(userRoutes);
+app.use("/users", userRoutes);
 app.listen(4000, () => {
   connect();
   console.log("server started on port 4000");
