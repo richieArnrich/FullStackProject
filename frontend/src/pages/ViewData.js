@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import "../styles/ViewData.css";
 function ViewData() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -13,9 +13,30 @@ function ViewData() {
   }, []);
   return (
     <div>
-      <h1>User Names in List</h1>
+      <h1>User Names in Table</h1>
       {console.log(users)}
-      
+      <table>
+        <thead>
+          <tr>
+            <th>Obj ID</th>
+            <th>name</th>
+            <th>email</th>
+            <th>contact</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => {
+            return (
+              <tr>
+                <td>{user._id}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.contact}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
