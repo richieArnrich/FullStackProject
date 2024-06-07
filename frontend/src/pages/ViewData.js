@@ -22,6 +22,7 @@ function ViewData() {
             <th>name</th>
             <th>email</th>
             <th>contact</th>
+            <th>Options</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,29 @@ function ViewData() {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.contact}</td>
+                <td>
+                  <button
+                    onClick={() => {
+                      axios
+                        .delete(
+                          "http://localhost:4000/users/deleteUser/" + user._id
+                        )
+                        .then((res) => {
+                          if (res.data.status === 200) {
+                            alert("user deleted successfully");
+                            window.location.reload();
+                          } else {
+                            Promise.reject();
+                          }
+                        })
+                        .catch((error) => {
+                          console.log(error);
+                        });
+                    }}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             );
           })}
