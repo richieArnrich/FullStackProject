@@ -45,7 +45,7 @@ const deleteUser = async (req, res) => {
 const updateUser = async (req, res) => {
   const id = req.params.id;
   try {
-    const updatedUser = User.findByIdAndUpdate(id, { $set: req.body });
+    const updatedUser = await User.findByIdAndUpdate(id, { $set: req.body });
     res.send({
       status: 200,
       updatedUser: updatedUser,

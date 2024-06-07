@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../styles/ViewData.css";
+import { Link } from "react-router-dom";
 function ViewData() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -55,7 +56,9 @@ function ViewData() {
                   >
                     Delete
                   </button>
-                  <button>Edit</button>
+                  <Link to={`/update/${user._id}`}>
+                    <button>Edit</button>
+                  </Link>
                 </td>
               </tr>
             );

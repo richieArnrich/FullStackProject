@@ -1,27 +1,27 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
 function UpdatePage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [contact, setContact] = useState("");
-
+  const obj1 = useParams();
+  console.log(obj1);
   let handleSubmit = (event) => {
     let inputObj = { name, email, password, contact };
     console.log(inputObj);
+
+    let url = "http://localhost:4000/users/updateUser/" + obj1.id;
     axios
-      .post("http://localhost:4000/users/createuser", inputObj)
+      .put(url, inputObj)
       .then((res) => {
-        console.log(res.data);
-        if (res.data.status === 200) {
-          alert("user created successfully");
-        } else {
-          Promise.reject();
-        }
+        alert("updated");
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
-        alert("something went wrong");
       });
     event.preventDefault();
   };
@@ -69,7 +69,7 @@ function UpdatePage() {
           }}
         />
         <button type="submit" id="input" onClick={handleSubmit}>
-          Sign Up
+          Update
         </button>
       </form>
     </div>
