@@ -42,4 +42,17 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getAllUsers, deleteUser };
+const updateUser = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const updatedUser = User.findByIdAndUpdate(id, { $set: req.body });
+    res.send({
+      status: 200,
+      updatedUser: updatedUser,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { createUser, getAllUsers, deleteUser, updateUser };

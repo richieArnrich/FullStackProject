@@ -55,6 +55,7 @@ function ViewData() {
                   >
                     Delete
                   </button>
+                  <button>Edit</button>
                 </td>
               </tr>
             );
